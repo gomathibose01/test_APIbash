@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: cloudflare/wrangler-action@v3
+        uses: actions/checkout@v2
 
       - name: Run Bash script
         run: bash maskingAPI_V1.0_TEST.sh
