@@ -1,0 +1,14 @@
+name: mask_Cardtable
+on:
+  workflow_dispatch:
+
+jobs:
+  bash-script:
+    runs-on: [self-hosted, Windows]
+    env:
+      PATH: 'C:\Program Files\Git\bin' 
+
+    steps:
+      - name: Run Bash script
+        
+        run: bash C:\dev\2024\NextGenKansas\maskingAPI_card_v1.0.sh
