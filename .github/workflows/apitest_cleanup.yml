@@ -1,0 +1,30 @@
+name: APITEST_cleanup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bash-script:
+    runs-on: [self-hosted, Windows]
+
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+      MASKING_ENGINE: http://10.10.1.13/masking/api/v5.1.27
+      APPLICATION_NAME: DEMOZZZZ
+      ENVIRONMENT_NAME: DEMOZZZZ
+      
+
+    steps:
+      - name: Set up Git for Windows
+        shell: cmd
+        run: |
+          "C:\Program Files\Git\bin\bash.exe" --version
+      - name: Run Bash script
+        # shell: bash
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          # HOST_USERNAME: ${{ secrets.HOST_USERNAME }}
+          # HOST_PASSWORD: ${{ secrets.HOST_PASSWORD }}
+          
+        run: bash C:\Users\sandhata\Desktop\maskingAPI_card_cleanup_v1.0.sh
