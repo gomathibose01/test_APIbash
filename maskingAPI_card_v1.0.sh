@@ -361,30 +361,6 @@ die() {
     echo "*******************************************************************************"
     exit 1
 }
-# main/start process
-
-# USERNAME="gomathi"
-# PASSWORD="Gomathi1@"
-# MASKING_ENGINE="http://10.10.1.13/masking/api/v5.1.27"
-
-# APPLICATION_NAME="DEMOZZZ1"
-# ENVIRONMENT_NAME="DEMOZZZ1"
-# CONNECTION_NAME=CONN_DEMOMSK1
-
-# DATABASE_TYPE="DB2_MAINFRAME"
-# HOST_IP="10.10.1.182"
-# HOST_USERNAME="IBMUSER"
-# HOST_PASSWORD="SANDHATA"
-
-# PORT="5040"
-# DBSCHEMA="DEV"
-# DBNAME="DALLASC"
-# RS_NAME="RS1"
-# INPUT_TABLE_NAME1="CARD_DETAILS"
-# COLNAME=CARD_NUMBER
-# ALGORITHM1="CreditCard"
-# DOMAIN1="CREDIT CARD"
-# JOB_NAME=DEMOMSKA
 
 # call the below Masking operations via API calls
 login
