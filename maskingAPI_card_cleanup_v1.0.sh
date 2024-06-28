@@ -87,12 +87,6 @@ fi
 
 # main/start process
 
-# USERNAME="gomathi"
-# PASSWORD="Gomathi1@"
-# MASKING_ENGINE="http://10.10.1.13/masking/api/v5.1.27"
-
-# APPLICATION_NAME="DEMOZZZZ"
-# ENVIRONMENT_NAME="DEMOZZZZ"
 # call the below Masking operations via API calls
 login
 get_delete_environment
