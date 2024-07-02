@@ -1,4 +1,4 @@
-name: CESAPI
+name: CESAPI_BUILDJCLs
 
 on:
   workflow_dispatch:
