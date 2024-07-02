@@ -1,0 +1,22 @@
+name: CESAPI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bash-script:
+    runs-on: [self-hosted, Windows]
+    
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+    steps:
+      # - name: Set up Git for Windows
+      #   # shell: cmd
+      #   run: |
+      #     "C:\Program Files\Git\bin\bash.exe" --version
+      - name: Run Bash script
+        # shell: bash
+        env:
+          CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+          CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+        run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh
