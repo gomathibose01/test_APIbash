@@ -15,6 +15,7 @@ jobs:
         env:
           CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
           CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+          PDS_NAME: ${{ vars.PDS_NAME }}
         run: 
           #bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
           echo "Environment variable PDS_NAME: " ${{ vars.PDS_NAME }}
