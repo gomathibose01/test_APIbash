@@ -25,8 +25,9 @@ jobs:
       CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
       CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
       PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
-      if: ${{ ${{needs.job1.outputs.output1}} == true }}
+
         steps:
         - name: Run Bash script - BUILD JCL submission
+          if: ${{ ${{needs.job1.outputs.output1}} == true }}
           run: bash value=$((C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh) 2> &1)      
           
