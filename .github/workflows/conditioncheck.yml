@@ -14,10 +14,6 @@ jobs:
       PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
     steps:
         - name: JCL submission #1 thru #10 / CES API calls via Bash script
-          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh
+          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh -e {0}
         - name: JCL submission $99NEWCP / CES API calls via Bash script
           run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
-
-- id: id
-  run: echo ::set-output name=key::value
-- if: steps.id.outputs.key == 'value'
