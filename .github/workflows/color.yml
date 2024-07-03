@@ -6,6 +6,8 @@ on:
 jobs:
   job1-bash-script:
     runs-on: [self-hosted, Windows]
+    env:
+      PATH: 'C:\Program Files\Git\bin'
     steps:
       - name: Set color
         id: color-selector
