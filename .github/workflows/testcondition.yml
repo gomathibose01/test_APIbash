@@ -20,7 +20,7 @@ jobs:
   job2-bash-script:
     runs-on: [self-hosted, Windows]
     needs: job1-bash-script
-    if ${{ ${{needs.job1.outputs.output1}} == true }} # won't execute if output of job 1 isn't true
+    if ${{ ${{needs.job1.outputs.output1}} == true }}
     env:
       PATH: 'C:\Program Files\Git\bin'
       CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
