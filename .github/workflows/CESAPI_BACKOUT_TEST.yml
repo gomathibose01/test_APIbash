@@ -14,4 +14,4 @@ jobs:
       PDS_NAME: 'IBMUSER.NEXTGEN.BACKOUT.JCL'
     steps:
         - name: Run Bash script - Backout JCL submission
-          run: bash C:\dev\2024\NextGenKansas\cesAPI_backoutjcl_v1.sh        
+          run: bash C:\dev\2024\NextGenKansas\cesAPI_backoutjcl_v1.sh -e {0}       
