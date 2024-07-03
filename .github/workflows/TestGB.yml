@@ -17,5 +17,5 @@ jobs:
       
     steps:
       -id: step1
-       run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh 
+       run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh
 
