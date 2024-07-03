@@ -9,15 +9,9 @@ jobs:
     
     env:
       PATH: 'C:\Program Files\Git\bin'
+      CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+      CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+      PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
     steps:
-      # - name: Set up Git for Windows
-      #   # shell: cmd
-      #   run: |
-      #     "C:\Program Files\Git\bin\bash.exe" --version
-      - name: Run Bash script
-        # shell: bash
-        env:
-          CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
-          CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
-          PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
-        run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh
+        - name: Run Bash script -  JCL submission #1 - #8
+          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh
