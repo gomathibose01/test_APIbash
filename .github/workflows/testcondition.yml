@@ -1,0 +1,32 @@
+name: testcondition
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1-bash-script:
+    runs-on: [self-hosted, Windows]
+    outputs:
+      output1: ${{ steps.script.outputs.bool }}
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+      CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+      CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+      PDS_NAME: 'IBMUSER.NEXTGEN.BACKOUT.JCL'
+    steps:
+        - name: Run Bash script - Backout JCL submission
+          run: bash value=$((C:\dev\2024\NextGenKansas\cesAPI_backoutjcl_v1.sh) 2> &1)      
+          echo "::set-output name=bool::$value" # set the value as output
+  job2-bash-script:
+    runs-on: [self-hosted, Windows]
+    needs: job1-bash-script
+    if ${{ ${{needs.job1.outputs.output1}} == true }} # won't execute if output of job 1 isn't true
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+      CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+      CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+      PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
+    steps:
+        - name: Run Bash script - BUILD JCL submission
+          run: bash value=$((C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh) 2> &1)      
+          
