@@ -9,10 +9,9 @@ jobs:
     runs-on: [self-hosted, Windows]
     env:
       PATH: 'C:\Program Files\Git\bin'
+      CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+      CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+      PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
     steps:
         - name: Run Bash script - Backout JCL submission
-        env:
-          CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
-          CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
-          PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
         run: bash C:\dev\2024\NextGenKansas\cesAPI_backoutjcl_v1.sh
