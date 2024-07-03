@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Set color
         env:
-          PATH: 'C:\Program Files\Git\bin'
+          shell: 'C:\Program Files\Git\bin\bash'
         id: color-selector
         run:  echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
       - name: Get color
