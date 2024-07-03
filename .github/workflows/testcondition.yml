@@ -16,7 +16,7 @@ jobs:
     steps:
         - name: Run Bash script - Backout JCL submission
           run: bash value=$((C:\dev\2024\NextGenKansas\cesAPI_backoutjcl_v1.sh) 2> &1)      
-          echo "::set-output name=bool::$value"
+                echo "::set-output name=bool::$value"
   job2-bash-script:
     runs-on: [self-hosted, Windows]
     needs: job1-bash-script
