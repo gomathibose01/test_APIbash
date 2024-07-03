@@ -4,15 +4,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1-bash-script:
+  bash-script:
     runs-on: [self-hosted, Windows]
+    
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+      CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+      CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+      PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
     steps:
-      - name: Set color
-        env:
-          shell: 'C:\Program Files\Git\bin\bash'
-        id: color-selector
-        run:  echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
-      - name: Get color
-        env:
-            SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
-        run: echo "The selected color is $SELECTED_COLOR"
+        - name: JCL submission #1 thru #10 / CES API calls via Bash script
+          id: job1
+          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh
+            echo ::set-output name=exit_code::$?
+        - name: JCL submission $99NEWCP / CES API calls via Bash script
+          if: steps.job1.outputs.exit_code == 0
+          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
