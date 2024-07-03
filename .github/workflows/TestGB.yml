@@ -17,8 +17,6 @@ jobs:
       
     steps:
       -id: step1
-        - name: JCL submission #1 thru #10 / CES API calls via Bash script
           run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh 
       -id: step2
-        - name: JCL submission $99NEWCP / CES API calls via Bash script
           run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
