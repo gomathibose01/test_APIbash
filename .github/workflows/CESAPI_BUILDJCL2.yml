@@ -9,13 +9,10 @@ jobs:
     
     env:
       PATH: 'C:\Program Files\Git\bin'
+      CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+      CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+      PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
     steps:
-      - name: Run Bash script
-        # shell: bash
-        env:
-          CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
-          CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
-          PDS_NAME: ${{ vars.PDS_NAME }}
-        run: 
-          bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
+        - name: Run Bash script -  JCL submission $99NEWCP
+          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
         
