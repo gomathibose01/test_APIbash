@@ -18,4 +18,4 @@ jobs:
           PDS_NAME: ${{ vars.PDS_NAME }}
         run: 
           #bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
-          echo "Environment variable PDS_NAME: " ${{ vars.PDS_NAME }}
+          echo "Environment variable PDS_NAME:  ${{ vars.PDS_NAME }}"
