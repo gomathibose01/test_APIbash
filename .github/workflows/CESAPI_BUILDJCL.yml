@@ -1,10 +1,10 @@
-name: CESAPI_BUILDJCL1
+name: CESAPI_BUILDJCL
 
 on:
   workflow_dispatch:
 
 jobs:
-  bash-script:
+  BuildApplicationcomponents:
     runs-on: [self-hosted, Windows]
     
     env:
@@ -14,6 +14,6 @@ jobs:
       PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
     steps:
         - name: JCL submission #1 thru #10 / CES API calls via Bash script
-          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1.sh -e {0}
-        - name: JCL submission $99NEWCP / CES API calls via Bash script
-          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1.sh
+          run: bash C:\dev\2024\NextGenKansas\cesAPIscript\cesAPI_buildjcl1_v1.0.sh
+        - name: JCL submission $99NEWCP / CES API calls via Bash script   
+          run: bash C:\dev\2024\NextGenKansas\cesAPIscript\cesAPI_buildjcl2_v1.0.sh
