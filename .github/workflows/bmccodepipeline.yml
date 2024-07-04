@@ -23,12 +23,13 @@ jobs:
           runtimeConfiguration: 'ISPT'
           stream: 'PLAY'
           application: 'TEST'
-          subAppl: 'TEST'
           checkoutLevel: 'DEV1'
           gitUid: 'gomathibose01'
-          gitToken: ${{ secrets.GIT_MY_PWD }}
+          gitPass: ${{ secrets.GIT_MY_PWD }}
           winTopazPath: ${{ env.Win_Topaz_Location }}
           showEnv: true
+          encryptionProtocol: None
+          codePage: 1047
 
       - name: Get automatic build parameters
         run: echo "automaticBuildJson=${{ steps.sync.outputs.automaticBuildJson }}"
