@@ -15,7 +15,7 @@ jobs:
     steps:
         - name: JCL submission #1 thru #10 / CES API calls via Bash script
           id: job1
-          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1_condcheck.sh
+          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl1_v1_condcheck1.sh
             echo ::set-output name=exit_code::$?
         - name: JCL submission $99NEWCP / CES API calls via Bash script
           if: steps.job1.outputs.exit_code == 0
