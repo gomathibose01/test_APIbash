@@ -1,8 +1,10 @@
-name: bmccodepipeline
+name: code-pipeline-build-test
 
 on:
-  workflow_dispatch:
-
+  push:
+    paths:
+      - 'cobol/**'
+      
 jobs:
   run-code-pipeline-build:
     runs-on: [self-hosted, Windows]
