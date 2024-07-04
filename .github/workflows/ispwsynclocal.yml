@@ -1,0 +1,71 @@
+name: code-pipeline-build-test-synclocal
+
+on:
+  push:
+    paths:
+      - 'cobol/**'
+      
+jobs:
+  generate:
+    name: sync local & generate & test
+    runs-on: [self-hosted, Windows]
+    env:
+      Win_Topaz_Location: 'C:\WorkbenchCLI'
+          
+    steps:
+      - name: checkout step
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+                                  
+      - name: sync step
+        uses: bmc-compuware/ispw-sync-local@main
+        id: sync
+        with:
+          host: 'BMC.POPUP-MAINFRAME.COM'
+          port: 16196
+          uid: ${{ secrets.TSOUSER }}
+          pass: ${{ secrets.TSOPASS }}
+          runtimeConfiguration: 'ISPT'
+          stream: 'PLAY'
+          application: 'TEST'
+          subAppl: 'TEST'
+          checkoutLevel: 'DEV1'
+          gitUid: ${{ secrets.GITUID }}
+          gitToken: ${{ secrets.GIT_TOKEN }}
+          winTopazPath: ${{ env.Win_Topaz_Location }}
+          #containerCreation: 'per-branch'
+          showEnv: true
+          
+      
+      - name: Get automatic build parameters
+        run: echo "automaticBuildJson=${{ steps.sync.outputs.automaticBuildJson }}"
+      
+      - name: generate step
+        uses: bmc-compuware/ispw-generate@main
+        id: generate
+        if: ${{ steps.sync.outputs.automaticBuildJson != '{}'}}
+        with:
+          ces_url: 'http://10.10.1.174:48226/'
+          ces_token: ${{ secrets.CES_172_IBMUSER_TOKEN }}
+          srid: 'ISPT'
+          runtime_configuration: 'ISPT'
+          generate_automatically: ${{ steps.sync.outputs.automaticBuildJson }}
+          
+      - name: wait 15 seconds for generate to complete
+        run: Start-Sleep -s 15
+        shell: powershell       
+      
+      - name: generate output
+        if: success() || failure()
+        run: |
+          echo "failed count: ${{ steps.generate.outputs.generate_failed_count }}"
+          echo "success count: ${{ steps.generate.outputs.generate_success_count }}"
+          echo "timeout? ${{ steps.generate.outputs.is_timed_out }} "
+          echo "has failure? ${{ steps.generate.outputs.has_failures }}"
+          echo "task count: ${{ steps.generate.outputs.task_count }}"
+          echo "set id: ${{ steps.generate.outputs.set_id }}"
+          echo "url: ${{ steps.generate.outputs.url }}"
+          echo "assignment id: ${{ steps.generate.outputs.assignment_id }}"
+          
+      
