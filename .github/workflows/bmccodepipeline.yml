@@ -3,7 +3,7 @@ name: code-pipeline-build-test
 on:
   push:
     paths:
-      - 'cobol/**'
+      - 'cobol1/**'
       
 jobs:
   run-code-pipeline-build:
