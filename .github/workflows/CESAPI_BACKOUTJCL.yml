@@ -1,11 +1,11 @@
 
-name: CESAPI_BACKOUTJCLs
+name: CESAPI_BACKOUTJCL
 
 on:
   workflow_dispatch:
 
 jobs:
-  bash-script:
+  BackoutApplication:
     runs-on: [self-hosted, Windows]
     env:
       PATH: 'C:\Program Files\Git\bin'
