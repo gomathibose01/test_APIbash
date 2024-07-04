@@ -26,7 +26,6 @@ jobs:
           checkoutLevel: 'DEV1'
           gitUid: 'gomathibose01'
           gitPass: ${{ secrets.GIT_MY_PWD }}
-          winTopazPath: ${{ env.Win_Topaz_Location }}
           showEnv: true
           encryptionProtocol: None
           codePage: 1047
