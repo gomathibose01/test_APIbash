@@ -19,4 +19,4 @@ jobs:
             #echo ::set-output name=exit_code::$?
         - name: JCL submission $99NEWCP / CES API calls via Bash script
           #if: steps.job1.outputs.exit_code == 0
-          run: bash C:\dev\2024\NextGenKansas\cesAPI_buildjcl2_v1_condcheck.sh
+          run: bash C:\dev\2024\NextGenKansas\cesAPIscript\cesAPI_buildjcl2_v1.0.sh
