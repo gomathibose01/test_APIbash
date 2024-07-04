@@ -7,7 +7,7 @@ on:
       
 jobs:
   run-code-pipeline-build:
-    runs-on: [self-hosted, Windows]
+    runs-on: ubuntu-latest
     env:
       Win_Topaz_Location: 'C:\WorkbenchCLI ' #local desktop    
     name: A job to sync git source into Code Pipeline, then build it on the mainframe
