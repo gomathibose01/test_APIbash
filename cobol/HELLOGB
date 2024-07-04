@@ -4,5 +4,5 @@
        DATA DIVISION.                                        
        PROCEDURE DIVISION.                                   
            DISPLAY 'HELLO WORLD'.                            
-           DISPLAY 'THIS IS GOMATHIs POPUP TEST BPROGRAM'.    
+           DISPLAY 'THIS IS GOMATHIs POPUP TEST CPROGRAM'.    
            STOP RUN.                                         
