@@ -3,6 +3,6 @@
        ENVIRONMENT DIVISION.                                 
        DATA DIVISION.                                        
        PROCEDURE DIVISION.                                   
-           DISPLAY 'HELLO 3 WORLD'.                            
+           DISPLAY 'HELLO 1 WORLD'.                            
            DISPLAY 'THIS IS GOMATHIs POPUP TEST PROGRAM'.    
            STOP RUN.                                         
