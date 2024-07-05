@@ -1,0 +1,56 @@
+name: Automated Testing Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  protractor_tests:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Set up Git for Windows
+        shell: cmd
+        run: |
+          "C:\Program Files\Git\bin\bash.exe" --version
+      
+      - name: Start WebDriver
+        shell: cmd
+        run: |
+          "C:\Program Files\Git\bin\bash.exe" C:\Users\sandhata\Desktop\selenium_server_manager.sh 
+  api-test:
+    runs-on: [self-hosted, Windows]
+    needs: protractor_tests
+    
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+      MASKING_ENGINE: "http://10.10.1.13/masking/api/v5.1.27"
+      APPLICATION_NAME: "DEMOZZZ1"
+      ENVIRONMENT_NAME: "DEMOZZZ1"
+      CONNECTION_NAME: "CONN_DEMOMSK1"
+      DATABASE_TYPE: "DB2_MAINFRAME"
+      HOST_IP: "10.10.1.182"
+      PORT: "5040"
+      DBSCHEMA: "DEV"
+      DBNAME: "DALLASC"
+      RS_NAME: "RS1"
+      INPUT_TABLE_NAME1: "CARD_DETAILS"
+      COLNAME: "CARD_NUMBER"
+      ALGORITHM1: "CreditCard"
+      DOMAIN1: "CREDIT CARD"
+      JOB_NAME: "DEMOMSKA"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Bash script
+        # shell: bash
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          HOST_USERNAME: ${{ secrets.HOST_USERNAME }}
+          HOST_PASSWORD: ${{ secrets.HOST_PASSWORD }}
+        run: bash C:\Users\sandhata\Desktop\maskingAPI_card_v1.0.sh
