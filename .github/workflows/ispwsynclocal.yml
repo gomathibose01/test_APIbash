@@ -10,7 +10,7 @@ jobs:
     name: sync local & generate & test
     runs-on: [self-hosted, Windows]
     env:
-      Win_Topaz_Location: 'C:\Users\sandhata\BMC\WorkbenchCLI_23.01.02'
+      Win_Topaz_Location: 'C:\WorkbenchCLI'
           
     steps:
       - name: checkout step
