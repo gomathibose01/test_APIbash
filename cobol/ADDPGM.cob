@@ -6,7 +6,7 @@
        01 WS-X    PIC 9(02).
        01 WS-Y    PIC 9(02).
        01 WS-Z    PIC 9(03).
-       01 WS-TOT  PIC 9(03).
+       01 WS-TOT  PIC 9(03) .
        PROCEDURE DIVISION.                                              00060001
            ACCEPT WS-X.
            ACCEPT WS-Y.
