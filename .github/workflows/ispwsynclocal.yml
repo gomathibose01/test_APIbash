@@ -28,8 +28,8 @@ jobs:
           pass: ${{ secrets.TSOPASS }}
           runtimeConfiguration: 'ISPT'
           stream: 'PLAY'
-          application: 'TEST'
-          subAppl: 'TEST'
+          application: 'PLAY'
+          subAppl: 'PLAY'
           checkoutLevel: 'DEV1'
           gitUid: ${{ secrets.GITUID }}
           gitToken: ${{ secrets.GIT_TOKEN }}
