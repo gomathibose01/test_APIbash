@@ -42,12 +42,12 @@ jobs:
         run: echo "automaticBuildJson=${{ steps.sync.outputs.automaticBuildJson }}"
       
       - name: generate step
-        uses: bmc-compuware/ispw-generate@v1
+        uses: bmc-compuware/ispw-generate@main
         id: generate
         if: ${{ steps.sync.outputs.automaticBuildJson != '{}'}}
         with:
           ces_url: 'http://10.10.1.174:48226/'
-          ces_token: ${{ secrets.CES_172_IBMUSER_TOKEN }}
+          ces_token: '83435d6b-e199-4d9e-a000-1905a9003cd6'
           srid: 'ISPT'
           runtime_configuration: 'ISPT'
           generate_automatically: ${{ steps.sync.outputs.automaticBuildJson }}
