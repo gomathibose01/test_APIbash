@@ -10,7 +10,7 @@
        PROCEDURE DIVISION.                                              00060001
            ACCEPT WS-X.
            ACCEPT WS-Y.
-           ACCEPT WS-Z .
+           ACCEPT WS-Z.
            ACCEPT WS-R.
            COMPUTE WS-TOT = WS-X + WS-Y.                                00060004
            DISPLAY 'SUM OF ' WS-X ' AND 'WS-Y ' IS:' WS-TOT.            00070001
