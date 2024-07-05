@@ -33,7 +33,7 @@ ispwApplication:
     types:
     - fileExtension: cmap
       ispwType: CMAP
-  - path: \COB
+  - path: \cobol
     types:
     - fileExtension: cob
       ispwType: COB
