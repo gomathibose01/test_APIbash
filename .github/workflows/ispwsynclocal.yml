@@ -42,7 +42,7 @@ jobs:
         run: echo "automaticBuildJson=${{ steps.sync.outputs.automaticBuildJson }}"
       
       - name: generate step
-        uses: bmc-compuware/ispw-generate@main
+        uses: bmc-compuware/ispw-generate@v1
         id: generate
         if: ${{ steps.sync.outputs.automaticBuildJson != '{}'}}
         with:
