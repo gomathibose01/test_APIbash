@@ -3,7 +3,7 @@ name: code-pipeline-build-test-synclocal
 on:
   push:
     paths:
-      - 'cobol/**'
+      - 'cbl/**'
       
 jobs:
   generate:
