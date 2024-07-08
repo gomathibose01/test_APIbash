@@ -11,7 +11,6 @@
            ACCEPT WS-X.
            ACCEPT WS-Y.
            ACCEPT WS-Z.
-           ACCEPT WS-S.
            COMPUTE WS-TOT = WS-X + WS-Y.                                00060004
            DISPLAY 'SUM OF ' WS-X ' AND 'WS-Y ' IS:' WS-TOT.            00070001
            IF WS-TOT NOT = WS-Z THEN
