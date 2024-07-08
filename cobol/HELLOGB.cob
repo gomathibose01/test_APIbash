@@ -1,4 +1,4 @@
-O       IDENTIFICATION DIVISION.                              
+       IDENTIFICATION DIVISION.                              
        PROGRAM-ID. HELLOGB.                                    
        ENVIRONMENT DIVISION.                                 
        DATA DIVISION.                                        
