@@ -1,0 +1,110 @@
+name: Application Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-application:
+    runs-on: self-hosted
+    
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+      CESAPI_SERVER: ${{ secrets.CESAPI_SERVER }}
+      CES_204_IBMUSER_AUTHTOKEN: ${{ secrets.CES_204_IBMUSER_AUTHTOKEN }}
+      PDS_NAME: 'IBMUSER.NEXTGEN.JCL'
+      Win_Topaz_Location: 'C:\WorkbenchCLI'
+
+    steps:
+      # CESAPI_BUILDJCL Steps
+      - name: JCL submission $1 thru $10 / CES API calls via Bash script
+        run: bash C:\dev\2024\NextGenKansas\cesAPIscript\cesAPI_buildjcl1_v1.0.sh
+      
+      # ISPW Sync Steps
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync local
+        id: sync
+        uses: bmc-compuware/ispw-sync-local@main
+        with:
+          host: 'BMC.POPUP-MAINFRAME.COM'
+          port: 16196
+          uid: ${{ secrets.TSOUSER }}
+          pass: ${{ secrets.TSOPASS }}
+          runtimeConfiguration: 'ISPT'
+          stream: 'PLAY'
+          application: 'TEST'
+          subAppl: 'PLAY'
+          checkoutLevel: 'DEV1'
+          gitUid: ${{ secrets.GITUID }}
+          gitToken: ${{ secrets.GIT_TOKEN }}
+          winTopazPath: ${{ env.Win_Topaz_Location }}
+          showEnv: true
+
+      - name: Get automatic build parameters
+        run: echo "automaticBuildJson=${{ steps.sync.outputs.automaticBuildJson }}"
+
+      - name: Generate step
+        id: generate
+        if: ${{ success() && steps.sync.outputs.automaticBuildJson != '{}' }}
+        uses: bmc-compuware/ispw-generate@main
+        with:
+          ces_url: ${{ secrets.CES_URL }}
+          ces_token: ${{ secrets.CES_TOKEN }}
+          srid: 'ISPT'
+          runtime_configuration: 'ISPT'
+          generate_automatically: ${{ steps.sync.outputs.automaticBuildJson }}
+
+      - name: Wait 15 seconds for generate to complete
+        if: ${{ success() && steps.generate.outputs.url != '' }}
+        run: Start-Sleep -s 15
+        shell: powershell
+
+      - name: Generate output
+        if: ${{ success() && steps.generate.outputs.url != '' }}
+        run: |
+          echo "failed count: ${{ steps.generate.outputs.generate_failed_count }}"
+          echo "success count: ${{ steps.generate.outputs.generate_success_count }}"
+          echo "timeout? ${{ steps.generate.outputs.is_timed_out }} "
+          echo "has failure? ${{ steps.generate.outputs.has_failures }}"
+          echo "task count: ${{ steps.generate.outputs.task_count }}"
+          echo "set id: ${{ steps.generate.outputs.set_id }}"
+          echo "url: ${{ steps.generate.outputs.url }}"
+          echo "assignment id: ${{ steps.generate.outputs.assignment_id }}"
+
+      # CESAPI_BUILDJCL Steps
+      - name: JCL submission new copy
+        run: bash C:\dev\2024\NextGenKansas\cesAPIscript\cesAPI_buildjcl2_v1.0.sh
+
+  protractor-test:
+    runs-on: self-hosted
+    needs: build-application
+   
+    env:
+      PATH: 'C:\Program Files\Git\bin;C:\Program Files\nodejs;C:\Windows\System32;C:\Users\sandhata\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_321\bin'
+
+    steps:
+      - name: Set up Git for Windows
+        shell: bash
+        run: |
+          echo "PATH is: $PATH"
+          echo "Checking Git version..."
+          "/c/Program Files/Git/bin/git" --version
+          echo "Checking Node.js version..."
+          "node" --version
+          echo "Checking npm version..."
+          "npm" --version
+          echo "Checking Java version..."
+          java -version
+
+      - name: Run Bash script
+        shell: bash
+        run: bash /c/Users/sandhata/Desktop/selenium_server_manager.sh 
+
+      - name: View log file contents
+        shell: bash
+        run: |
+          echo "Contents of selenium_server.log:"
+          cat /c/Users/sandhata/AppData/Roaming/npm/node_modules/protractor/node_modules/selenium_server.log
