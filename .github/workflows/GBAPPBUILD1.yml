@@ -76,6 +76,7 @@ jobs:
 
       # CESAPI_BUILDJCL Steps
       - name: JCL submission new copy
+        if: ${{ steps.generate.outputs.generate_success_count != 0 }} 
         run: bash C:\dev\2024\NextGenKansas\cesAPIscript\cesAPI_buildjcl2_v1.0.sh
 
   protractor-test:
