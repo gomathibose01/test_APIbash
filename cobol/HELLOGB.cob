@@ -1,5 +1,5 @@
-       IDENTIFICATION DIVISION.                              
-       PROGRAM-ID. PGM01.                                    
+O       IDENTIFICATION DIVISION.                              
+       PROGRAM-ID. HELLOGB.                                    
        ENVIRONMENT DIVISION.                                 
        DATA DIVISION.                                        
        PROCEDURE DIVISION.                                   
