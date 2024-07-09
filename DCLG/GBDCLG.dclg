@@ -2,7 +2,7 @@
       * DCLGEN TABLE(PROD.TRANSACTIONS)                                *
       *        LIBRARY(ISPW.DEMO.PROD.DCLG(TRANSDCL))                  *
       *        LANGUAGE(COBOL)                                         *
-      *        QUOTE                                                   *
+      *        QUOTE     TEST                                              *
       * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *
       ******************************************************************
            EXEC SQL DECLARE PROD.TRANSACTIONS TABLE
