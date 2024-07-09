@@ -1,0 +1,10 @@
+       01 LK-REQ.                                                       00010000
+          03 LK-ACCT-NO             PIC 9(15).                          00020000
+       01 LK-RES.                                                       00030000
+          03 LK-TRANS-ITEM OCCURS 10 TIMES.                             00040000
+             05 LK-TRANS-ID          PIC X(15).                         00050000
+             05 LK-TRANS-DATE        PIC X(10).                         00060000
+             05 LK-TRANS-REF         PIC X(20).                         00070000
+             05 LK-TRANS-AMOUNT      PIC X(11).                         00080000
+             05 LK-TRANS-TYPE        PIC X(2).                          00090000
+             05 LK-BALANCE           PIC X(11).                         00100000
