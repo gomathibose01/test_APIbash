@@ -9,4 +9,4 @@
                  07 TR-TRANS-REF         PIC X(20).                     00090000
                  07 TR-TRANS-AMOUNT      PIC X(11).                     00100000
                  07 TR-TRANS-TYPE        PIC X(2).                      00110000
-                 07 TR-BALANCE           PIC X(11).                     00120000
+                 07 TR-BALANCE           PIC X(11) .                    00120000
