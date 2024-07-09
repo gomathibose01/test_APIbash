@@ -1,0 +1,10 @@
+//$06SCICS JOB 1,POPUP,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+//*
+//*********************************************************************/
+//*               STARTS CICS TRANSACTION SERVER
+//*********************************************************************/
+//*
+//START    EXEC PGM=IEFBR14
+//SYSPRINT DD SYSOUT=*
+//         COMMAND 'S CICSTS56'
+//*

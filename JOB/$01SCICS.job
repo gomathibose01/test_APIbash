@@ -1,0 +1,10 @@
+//$01SCICS JOB 1,POPUP,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+//*
+//*********************************************************************/
+//*               STOPS CICS TRANSACTION SERVER
+//*********************************************************************/
+//*
+//STOP     EXEC PGM=IEFBR14
+//SYSPRINT DD SYSOUT=*
+//         COMMAND 'C CICSTS56'
+//*

@@ -1,0 +1,11 @@
+//$99NEWCP JOB 1,POPUP,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID                JOB06110
+//*
+//*********************************************************************/
+//*                 DOES A CICS NEWCOPY
+//*********************************************************************/
+//*
+//NEWCOPY  EXEC PGM=IEFBR14
+//SYSPRINT DD SYSOUT=*
+//         COMMAND 'F CICSTS56,CEMT SET PROG(TRANQURY) NEW'
+//         COMMAND 'F CICSTS56,CEMT SET PROG(TRANHIST) NEW'
+//*
