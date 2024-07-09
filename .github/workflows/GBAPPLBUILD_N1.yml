@@ -1,4 +1,4 @@
-name: GB Application Build
+name: GB Application Build N1
 
 on:
   workflow_dispatch:
