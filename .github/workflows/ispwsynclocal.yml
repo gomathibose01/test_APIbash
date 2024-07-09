@@ -23,15 +23,15 @@ jobs:
         uses: bmc-compuware/ispw-sync-local@main
         id: sync
         with:
-          host: 'BMC.POPUP-MAINFRAME.COM'
+          host: 'BMC204.POPUP-MAINFRAME.COM'
           port: 16196
           uid: ${{ secrets.TSOUSER }}
           pass: ${{ secrets.TSOPASS }}
           runtimeConfiguration: 'ISPT'
-          stream: 'PLAY'
-          application: 'TEST'
-          subAppl: 'PLAY'
-          checkoutLevel: 'DEV1'
+          stream: 'DEMO'
+          application: 'DEMO'
+          subAppl: 'DEMO'
+          checkoutLevel: 'DEV'
           gitUid: ${{ secrets.GITUID }}
           gitToken: ${{ secrets.GIT_TOKEN }}
           winTopazPath: ${{ env.Win_Topaz_Location }}
@@ -48,7 +48,8 @@ jobs:
         if: ${{ steps.sync.outputs.automaticBuildJson != '{}'}}
         with:
           ces_url: 'http://10.10.1.174:48226/'
-          ces_token: '83435d6b-e199-4d9e-a000-1905a9003cd6'
+          ces_token: 'd04ad363-47b2-49a7-99d8-4e262c8aa1d0'   # 204
+         # ces_token: '83435d6b-e199-4d9e-a000-1905a9003cd6' #172
           srid: 'ISPT'
           runtime_configuration: 'ISPT'
           generate_automatically: ${{ steps.sync.outputs.automaticBuildJson }}
