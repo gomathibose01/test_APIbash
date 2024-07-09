@@ -1,12 +1,14 @@
 name: code-pipeline-build-test-synclocal
 
+#on:
+ # push:
+  #  paths:
+   #   - 'cobol/**'
+   #   - 'COPY/**'
+   #   - 'DCLG/**'
 on:
-  push:
-    paths:
-      - 'cobol/**'
-      - 'COPY/**'
-      - 'DCLG/**'
-      
+  workflow_dispatch:
+
 jobs:
   generate:
     name: sync local & generate & test
