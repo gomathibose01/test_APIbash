@@ -5,6 +5,7 @@ on:
     paths:
       - 'cobol/**'
       - 'COPY/**'
+      - 'DCLG/**'
       
 jobs:
   generate:
