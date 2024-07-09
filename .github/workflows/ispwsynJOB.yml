@@ -1,9 +1,9 @@
 name: code-pipeline-sync-gittoispw-JOB
 
-on:
-  push:
-   paths:
-     - 'JOB/**'
+#on:
+#  push:
+#   paths:
+ #    - 'JOB/**'
 
 jobs:
   generate:
