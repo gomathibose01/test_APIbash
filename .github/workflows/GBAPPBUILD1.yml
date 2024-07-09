@@ -18,44 +18,20 @@ jobs:
       # CESAPI_BUILDJCL Steps
       - name: JCL submission $1 thru $10 / CES API calls via Bash script
         run: bash C:\dev\2024\NextGenKansas\cesAPIscript\cesAPI_buildjcl1_v1.0.sh
-      
-      # ISPW Sync Steps
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Sync local
-        id: sync
-        uses: bmc-compuware/ispw-sync-local@main
-        with:
-          host: 'BMC.POPUP-MAINFRAME.COM'
-          port: 16196
-          uid: ${{ secrets.TSOUSER }}
-          pass: ${{ secrets.TSOPASS }}
-          runtimeConfiguration: 'ISPT'
-          stream: 'PLAY'
-          application: 'TEST'
-          subAppl: 'PLAY'
-          checkoutLevel: 'DEV1'
-          gitUid: ${{ secrets.GITUID }}
-          gitToken: ${{ secrets.GIT_TOKEN }}
-          winTopazPath: ${{ env.Win_Topaz_Location }}
-          showEnv: true
-
-      - name: Get automatic build parameters
-        run: echo "automaticBuildJson=${{ steps.sync.outputs.automaticBuildJson }}"
-
+        
       - name: Generate step
         id: generate
-        if: ${{ success() && steps.sync.outputs.automaticBuildJson != '{}' }}
         uses: bmc-compuware/ispw-generate@main
         with:
           ces_url: ${{ secrets.CES_URL }}
           ces_token: ${{ secrets.CES_TOKEN }}
           srid: 'ISPT'
           runtime_configuration: 'ISPT'
-          generate_automatically: ${{ steps.sync.outputs.automaticBuildJson }}
+          assignment_id: DEMO000001
+          level: DEV
+          
+      - name: Get the set ID for the generate
+        run: echo "The Code Pipeline set used for the generate is ${{ steps.generate.outputs.set_id }}"
 
       - name: Wait 15 seconds for generate to complete
         if: ${{ success() && steps.generate.outputs.url != '' }}
