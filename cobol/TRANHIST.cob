@@ -26,6 +26,7 @@
            03 EM-REQUEST-ID            PIC X(6)  VALUE SPACES.          00260000
            03 FILLER                   PIC X     VALUE SPACES.          00270000
            03 EM-DETAIL                PIC X(50) VALUE SPACES.          00280000
+           03 EM-DETAIL1               PIC X(50) VALUE SPACES.  
                                                                         00290000
       * Working variables                                               00300000
        01 WS-REQ.                                                       00310000
