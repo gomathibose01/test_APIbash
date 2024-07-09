@@ -1,0 +1,39 @@
+name: code-pipeline-sync-gittoispw-JOB
+
+on:
+  push:
+   paths:
+     - 'JOB/**'
+
+jobs:
+  generate:
+    name: sync local & generate & test
+    runs-on: [self-hosted, Windows]
+    env:
+      Win_Topaz_Location: 'C:\WorkbenchCLI'
+          
+    steps:
+      - name: checkout step
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+                                  
+      - name: sync step
+        uses: bmc-compuware/ispw-sync-local@main
+        id: sync
+        with:
+          host: 'BMC204.POPUP-MAINFRAME.COM'
+          port: 16196
+          uid: ${{ secrets.TSOUSER }}
+          pass: ${{ secrets.TSOPASS }}
+          runtimeConfiguration: 'ISPT'
+          stream: 'DEMO'
+          application: 'DEMO'
+          subAppl: 'DEMO'
+          checkoutLevel: 'DEV'
+          gitUid: ${{ secrets.GITUID }}
+          gitToken: ${{ secrets.GIT_TOKEN }}
+          winTopazPath: ${{ env.Win_Topaz_Location }}
+          #containerCreation: 'per-branch'
+          showEnv: true          
+      
