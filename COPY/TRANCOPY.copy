@@ -1,0 +1,12 @@
+      *    TRANHIST COMMAREA LAYOUT                                     00010000
+            03 GETTRANS.                                                00020000
+               05 TR-ACCT-NO             PIC 9(15).                     00030000
+            03 TR-TRAN-HISTORY REDEFINES GETTRANS.                      00040000
+      *     03 TR-TRAN-HISTORY.                                         00050000
+               05 TR-TRANS-ITEM OCCURS 10 TIMES.                        00060000
+                 07 TR-TRANS-ID          PIC X(15).                     00070000
+                 07 TR-TRANS-DATE        PIC X(10).                     00080000
+                 07 TR-TRANS-REF         PIC X(20).                     00090000
+                 07 TR-TRANS-AMOUNT      PIC X(11).                     00100000
+                 07 TR-TRANS-TYPE        PIC X(2).                      00110000
+                 07 TR-BALANCE           PIC X(11).                     00120000
