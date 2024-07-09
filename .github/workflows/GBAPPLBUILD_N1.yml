@@ -1,4 +1,4 @@
-name: GB Application Build N1
+name: GB Application Build N1 -204
 
 on:
   workflow_dispatch:
@@ -29,10 +29,10 @@ jobs:
         uses: bmc-compuware/ispw-sync-local@main
         id: sync
         with:
-          host: 'BMC.POPUP-MAINFRAME.COM'
+          host: 'BMC204.POPUP-MAINFRAME.COM'
           port: 16196
           uid: ${{ secrets.TSOUSER }}
-          pass: 'SANDHATA'
+          pass: ${{ secrets.TSOPASS }}
           runtimeConfiguration: 'ISPT'
           stream: 'DEMO'
           application: 'DEMO'
