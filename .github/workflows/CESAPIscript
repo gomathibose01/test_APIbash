@@ -1,0 +1,14 @@
+name: CESAPIscript
+
+on:
+  workflow_dispatch:
+
+jobs:
+  CESAPI_JCL:
+    runs-on: [self-hosted, Windows]
+    
+    env:
+      PATH: 'C:\Program Files\Git\bin'
+    steps:
+       - name: Run Bash script
+         run: bash C:\dev\2024\NextGenKansas\cesAPIJCLsubmit.sh
