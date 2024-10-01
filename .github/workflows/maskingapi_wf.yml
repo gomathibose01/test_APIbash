@@ -1,4 +1,4 @@
-name: Bash Script
+name: maskBash Script
 on:
   workflow_dispatch:
 
